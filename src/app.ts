@@ -12,7 +12,7 @@ import notFound from "./app/middleware/notFound";
 const app: Application = express();
 
 // Middleware setup
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "https://todays-mart.vercel.app" }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -41,7 +41,7 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
       hostname: serverHostname,
       platform: serverPlatform,
       uptime: `${Math.floor(serverUptime / 60 / 60)} hours ${Math.floor(
-        (serverUptime / 60) % 60
+        (serverUptime / 60) % 60,
       )} minutes`,
     },
     developerContact: {
