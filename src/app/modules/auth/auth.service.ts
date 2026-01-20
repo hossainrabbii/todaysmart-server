@@ -45,13 +45,13 @@ const loginUser = async (payload: IAuth) => {
       const accessToken = createToken(
          jwtPayload,
          config.jwt_access_secret as string,
-         config.jwt_access_expires_in as string
+         config.jwt_access_expires_in
       );
 
       const refreshToken = createToken(
          jwtPayload,
          config.jwt_refresh_secret as string,
-         config.jwt_refresh_expires_in as string
+         config.jwt_refresh_expires_in 
       );
 
       const updateUserInfo = await User.findByIdAndUpdate(
@@ -110,7 +110,7 @@ const refreshToken = async (token: string) => {
    const newAccessToken = createToken(
       jwtPayload,
       config.jwt_access_secret as Secret,
-      config.jwt_access_expires_in as string
+      config.jwt_access_expires_in,
    );
 
    return {
