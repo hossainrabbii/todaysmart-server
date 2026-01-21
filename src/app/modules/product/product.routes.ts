@@ -19,7 +19,8 @@ router.get(
    ProductController.getMyShopProducts
 );
 
-router.get('/:productId', ProductController.getSingleProduct);
+// router.get('/:productId', ProductController.getSingleProduct);
+router.get('/:slug', ProductController.getSingleProductSlug);
 
 
 router.post(

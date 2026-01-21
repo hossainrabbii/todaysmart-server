@@ -10,7 +10,7 @@ const createProduct = catchAsync(async (req: Request, res: Response) => {
   const result = await ProductService.createProduct(
     req.body,
     req.files as IImageFiles,
-    req.user as IJwtPayload
+    req.user as IJwtPayload,
   );
 
   sendResponse(res, {
@@ -56,10 +56,22 @@ const getSingleProduct = catchAsync(async (req, res) => {
   });
 });
 
+const getSingleProductSlug = catchAsync(async (req, res) => {
+  const { slug } = req.params;
+  const result = await ProductService.getSingleProductSlug(slug);
+
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Product retrieved successfully",
+    data: result,
+  });
+});
+
 const getMyShopProducts = catchAsync(async (req, res) => {
   const result = await ProductService.getMyShopProducts(
     req.query,
-    req.user as IJwtPayload
+    req.user as IJwtPayload,
   );
 
   sendResponse(res, {
@@ -82,7 +94,7 @@ const updateProduct = catchAsync(async (req, res) => {
     productId,
     payload,
     req.files as IImageFiles,
-    user as IJwtPayload
+    user as IJwtPayload,
   );
 
   sendResponse(res, {
@@ -102,7 +114,7 @@ const deleteProduct = catchAsync(async (req, res) => {
 
   const result = await ProductService.deleteProduct(
     productId,
-    user as IJwtPayload
+    user as IJwtPayload,
   );
 
   sendResponse(res, {
@@ -121,4 +133,5 @@ export const ProductController = {
   updateProduct,
   deleteProduct,
   getMyShopProducts,
+  getSingleProductSlug,
 };
